@@ -17,6 +17,7 @@ for (const guitarra of guitarras) {
 
     li.innerHTML = `
     <img src=${guitarra.img} >
+    <h5 class="centrado">ID producto: ${guitarra.id}</h5>
     <h3 class="centrado">${guitarra.tipo}</h3>
     <h4 class="centrado">${guitarra.marca} ${guitarra.modelo}</h4>
     <p class="centrado">Precio: $${guitarra.precio}</p>
@@ -30,6 +31,7 @@ for (const bajo of bajos) {
 
     li.innerHTML = `
     <img src=${bajo.img} >
+    <h5 class="centrado">ID producto: ${bajo.id}</h5>
     <h3 class="centrado">${bajo.tipo}</h3>
     <h4 class="centrado">${bajo.marca} ${bajo.modelo}</h4>
     <p class="centrado">Precio: $${bajo.precio}</p>

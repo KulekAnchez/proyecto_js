@@ -133,7 +133,7 @@ main img {
     width: 18%;
     background-color: rgb(223, 123, 77);
     box-shadow: 2px 6px 3px 3px rgba(0, 0, 0, 0.3);
-    height: 450px;
+    height: 40rem;
 }
 
 #lista-productos-guitarras li img {
@@ -159,7 +159,7 @@ main img {
     width: 18%;
     background-color: rgb(223, 123, 77);
     box-shadow: 2px 6px 3px 3px rgba(0, 0, 0, 0.3);
-    height: 450px;
+    height: 40rem;
 }
 
 #lista-productos-bajos li img {
@@ -201,6 +201,7 @@ button {
     font-family: 'Zen Kaku Gothic Antique', sans-serif;
     font-size: 2rem;
     text-align: center;
+    animation-duration: 7s;
 }
 
 hr {
