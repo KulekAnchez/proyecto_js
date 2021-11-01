@@ -1,0 +1,220 @@
+/* GLOBALES */
+
+html {
+    font-size: 15px;
+}
+
+body {
+    background-color: #2a2a72;
+    background-image: linear-gradient(315deg, #2a2a72 0%, #009ffd 74%);
+}
+
+.centrado {
+    text-align: center;
+}
+
+
+/* HEADER */
+
+header {
+    background-color: rgba(224, 98, 39, 0.836);
+    display: flex;
+    justify-content: space-between;
+    box-shadow: 2px 6px 3px 3px rgba(0, 0, 0, 0.3);
+    margin-bottom: 1rem;
+    position: sticky;
+    top: 0px;
+    z-index: 3;
+}
+
+header ul {
+    display: flex;
+    flex-direction: row;
+}
+
+header ul li {
+    list-style: none;
+    font-size: 1.7rem;
+    font-family: 'Zen Kaku Gothic Antique', sans-serif;
+    font-weight: 700;
+    padding: 0.5rem;
+    margin-right: 2rem;
+}
+
+header ul li a {
+    text-decoration: none;
+    color: black;
+}
+
+header h1 {
+    font-size: 2rem;
+    margin-left: 1rem;
+    font-family: 'Zen Kaku Gothic Antique', sans-serif;
+    font-weight: 900;
+    width: 13rem;
+    height: 2rem;
+}
+
+header h1 a {
+    text-decoration: none;
+    color: black;
+}
+
+#placa-bienvenida {
+    width: 15rem;
+    height: 100%;
+}
+
+.placa-bienvenida {
+    display: inline-block;
+    margin: 0 0.5rem;
+    animation-duration: 5s;
+}
+
+header p {
+    color: black;
+    text-align: center;
+    font-size: 1.2rem;
+    width: 15rem;
+    height: 100%;
+    border: solid 3px black;
+    border-style: double;
+    padding: .5rem;
+}
+
+
+/* MAIN  INDEX */
+
+main {
+    display: flex;
+    height: 70vh;
+    width: 100%;
+    margin-bottom: 2rem;
+    box-shadow: 2px 6px 3px 3px rgba(0, 0, 0, 0.3);
+    justify-content: space-around;
+}
+
+main img {
+    width: 100%;
+    z-index: 1;
+    position: relative;
+}
+
+
+/* PRODUCTOS CON SUS CARDS */
+
+
+/* Guitarras */
+
+#seccion-productos {
+    display: flex;
+    flex-direction: column;
+}
+
+#seccion-productos span {
+    font-family: 'Zen Kaku Gothic Antique', sans-serif;
+    font-size: 1.7rem;
+    font-weight: 700;
+    text-align: center;
+}
+
+#lista-productos-guitarras {
+    display: flex;
+    justify-content: space-around;
+    justify-items: center;
+    margin-bottom: 2rem;
+}
+
+#lista-productos-guitarras li {
+    list-style: none;
+    align-items: center;
+    margin-right: 2rem;
+    border: solid 1px black;
+    width: 18%;
+    background-color: rgb(223, 123, 77);
+    box-shadow: 2px 6px 3px 3px rgba(0, 0, 0, 0.3);
+    height: 450px;
+}
+
+#lista-productos-guitarras li img {
+    width: 100%;
+    height: 60%;
+}
+
+
+/* Bajos */
+
+#lista-productos-bajos {
+    display: flex;
+    justify-content: space-around;
+    justify-items: center;
+    margin-bottom: 2rem;
+}
+
+#lista-productos-bajos li {
+    list-style: none;
+    align-items: center;
+    margin-right: 2rem;
+    border: solid 1px black;
+    width: 18%;
+    background-color: rgb(223, 123, 77);
+    box-shadow: 2px 6px 3px 3px rgba(0, 0, 0, 0.3);
+    height: 450px;
+}
+
+#lista-productos-bajos li img {
+    width: 100%;
+    height: 60%;
+}
+
+button {
+    margin-left: 3.8rem;
+    padding: .5rem;
+    background-color: #00a0fda8;
+    font-family: 'Zen Kaku Gothic Antique', sans-serif;
+    font-weight: 500;
+    font-size: 1rem;
+    margin-bottom: 3rem;
+}
+
+
+/* SECCION INSTRUMENTOS */
+
+#main-instrumentos {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    box-shadow: none;
+    margin-top: 4rem;
+    margin-bottom: 5rem;
+}
+
+#main-instrumentos img {
+    width: 100%;
+    position: relative;
+    height: 100%;
+    box-shadow: 2px 6px 3px 3px rgba(0, 0, 0, 0.3);
+}
+
+#main-instrumentos h2 {
+    margin-bottom: 3rem;
+    font-family: 'Zen Kaku Gothic Antique', sans-serif;
+    font-size: 2rem;
+    text-align: center;
+}
+
+hr {
+    width: 100%;
+    color: rgb(182, 60, 4);
+}
+
+
+/* FOOTER */
+
+footer {
+    margin-top: 1rem;
+}
+
+footer p {
+    font-size: 1.2rem;
+}
