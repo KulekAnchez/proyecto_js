@@ -8,60 +8,62 @@ const listaBajos = document.getElementById("lista-productos-bajos")
 //CON CSS LES DI FORMA EN UN CONTENEDOR PARA QUE SEA MAS ESTÉTICO TODO :)
 
 
-/*instrumentos.forEach((guitarras, bajos) => {
+instrumentos.forEach((instrumento) => {
     const li = document.createElement("li")
-    if (guitarras) {
+    if (instrumento.id < 9) {
         li.innerHTML = `
-        <img src=${guitarras.img} >
-        <h3 class="centrado">${guitarras.tipo}</h3>
-        <h4 class="centrado">${guitarras.marca} ${guitarras.modelo}</h4>
-        <p class="centrado">Precio: $${guitarras.precio}</p>
-        <button onclick="agregarAlCarritoG(${guitarras.id})">Añadir al carrito</button>
+        <img src=${instrumento.img} >
+        <h3 class="centrado">${instrumento.tipo}</h3>
+        <h4 class="centrado">${instrumento.marca} ${instrumento.modelo}</h4>
+        <p class="centrado">Precio: $${instrumento.precio}</p>
+        <button onclick="agregarAlCarrito(${instrumento.id})">Añadir al carrito</button>
     `
-        listaGuitarras.appendChild(li)
+        listaGuitarras.append(li)
 
-    } else if (bajos) {
-        const li = document.createElement("li")
+    } else if (instrumento.id > 9) {
 
         li.innerHTML = `
-        <img src=${bajos.img} >
-        <h3 class="centrado">${bajos.tipo}</h3>
-        <h4 class="centrado">${bajos.marca} ${bajos.modelo}</h4>
-        <p class="centrado">Precio: $${bajos.precio}</p>
-        <button onclick="agregarAlCarritoB(${bajos.id})">Añadir al carrito</button>
+        <img src=${instrumento.img} >
+        <h3 class="centrado">${instrumento.tipo}</h3>
+        <h4 class="centrado">${instrumento.marca} ${instrumento.modelo}</h4>
+        <p class="centrado">Precio: $${instrumento.precio}</p>
+        <button onclick="agregarAlCarrito(${instrumento.id})">Añadir al carrito</button>
     `
         listaBajos.appendChild(li)
 
     }
 
-})*/
-
-guitarras.forEach((guitarra) => {
-        const li = document.createElement("li")
-
-        li.innerHTML = `
-    <img src=${guitarra.img} >
-    <h3 class="centrado">${guitarra.tipo}</h3>
-    <h4 class="centrado">${guitarra.marca} ${guitarra.modelo}</h4>
-    <p class="centrado">Precio: $${guitarra.precio}</p>
-    <button onclick="agregarAlCarritoG(${guitarra.id})">Añadir al carrito</button>
-    `
-        listaGuitarras.appendChild(li)
-    }) //AL BOTON ACA ARRIBA LE DI VALOR DESDE EL ID DE CADA UNO DE MIS OBJETOS, LO QUE ME CREO BOTONES INDEPENDIENTES EN CADA CARD,
-
-
-bajos.forEach((bajo) => {
-    const li = document.createElement("li")
-
-    li.innerHTML = `
-    <img src=${bajo.img} >
-    <h3 class="centrado">${bajo.tipo}</h3>
-    <h4 class="centrado">${bajo.marca} ${bajo.modelo}</h4>
-    <p class="centrado">Precio: $${bajo.precio}</p>
-    <button onclick="agregarAlCarritoB(${bajo.id})">Añadir al carrito</button>
-    `
-    listaBajos.appendChild(li)
 })
+
+
+//                         -------------- DESESTIMAR CODIGO COMENTADO  -------------
+
+// guitarras.forEach((guitarra) => {
+//         const li = document.createElement("li")
+
+//         li.innerHTML = `
+//     <img src=${guitarra.img} >
+//     <h3 class="centrado">${guitarra.tipo}</h3>
+//     <h4 class="centrado">${guitarra.marca} ${guitarra.modelo}</h4>
+//     <p class="centrado">Precio: $${guitarra.precio}</p>
+//     <button onclick="agregarAlCarritoG(${guitarra.id})">Añadir al carrito</button>
+//     `
+//         listaGuitarras.appendChild(li)
+//     }) //AL BOTON ACA ARRIBA LE DI VALOR DESDE EL ID DE CADA UNO DE MIS OBJETOS, LO QUE ME CREO BOTONES INDEPENDIENTES EN CADA CARD,
+
+
+// bajos.forEach((bajo) => {
+//     const li = document.createElement("li")
+
+//     li.innerHTML = `
+//     <img src=${bajo.img} >
+//     <h3 class="centrado">${bajo.tipo}</h3>
+//     <h4 class="centrado">${bajo.marca} ${bajo.modelo}</h4>
+//     <p class="centrado">Precio: $${bajo.precio}</p>
+//     <button onclick="agregarAlCarritoB(${bajo.id})">Añadir al carrito</button>
+//     `
+//     listaBajos.appendChild(li)
+// })
 
 
 
@@ -71,41 +73,41 @@ const carrito = [];
 
 
 //A ESTA FUNCION CON PARAMETRO LE PIDO QUE ME DEVUELVA UNA GUITARRA SEGUN EL ID DE CADA BOTON INDEPENDIENTE QUE SE GENERÓ
-function agregarAlCarritoG(guitId) {
+function agregarAlCarrito(instId) {
 
-    let guitarra = guitarras.find((el) => el.id === guitId)
-    carrito.push(guitarra)
+    let instrumento = instrumentos.find((el) => el.id === instId)
+    carrito.push(instrumento)
 
 
-    mostrarCompraG()
+    mostrarCompra()
 }
 //Y A ESTA ARROW FUNCTION LE DIGO QUE TOME UNA TABLA QUE CREE EN HTML 
-const mostrarCompraG = () => {
+const mostrarCompra = () => {
     let tableBody = document.getElementById("tablaCarrito")
 
     tableBody.innerHTML = ""
         //ASIGNO LA VARIABLE Y DOY UN CUERPO DE TABLA VACIO PARA LUEGO LLENARLO ABAJO CON UN TR 
         //HACIENDO OTRO FOR EACH EL CUAL ME DEVUELVE TD´S ADENTRO CON LOS VALORES DE CADA GUITARRA
-    carrito.forEach((guitarra) => {
+    carrito.forEach((instrumento) => {
         const tr = document.createElement("tr")
         tr.innerHTML = `
-        <td>${guitarra.id}</td>
-        <td>${guitarra.tipo}</td>
-        <td>${guitarra.marca}</td>
-        <td>${guitarra.modelo}</td>
-        <td>${guitarra.precio}</td>
+        <td>${instrumento.id}</td>
+        <td>${instrumento.tipo}</td>
+        <td>${instrumento.marca}</td>
+        <td>${instrumento.modelo}</td>
+        <td>${instrumento.precio}</td>
+        <td id="tablaConBoton"><button id="botonBorre-${instrumento.id}"><p>Eliminar Producto</p></button></td>
         `
-            //LOS ASIGNO COMO HIJOS DEL BODY ANTERIOR
+
         tableBody.appendChild(tr)
 
-        //Y ACA ABAJO, CON MI ULTIMA NEURONA SANA GENERO UN LOCAL STORAGE DESDE EL CARRITO PASADO POR JSON
-        //EL CUAL ME ACUMULA EN UN ARRAY TODOS LOS OBJETOS QUE YO HAYA DECIDIDO AGREGAR AL CARRITO
-        //SE ALMACENAN EN STORAGE PERO LA TABLA NO ME QUEDA GUARDADA, PROMETO CONCENTRAR EN ESO
-        //POR LO PRONTO YA CUMPLO LOS REQUISITOS DE LA SEGUNDA PRE-ENTREGA :)
+        /*Y ACA ABAJO, CON MI ULTIMA NEURONA SANA GENERO UN LOCAL STORAGE DESDE EL CARRITO PASADO POR JSON
+        EL CUAL ME ACUMULA EN UN ARRAY TODOS LOS OBJETOS QUE YO HAYA DECIDIDO AGREGAR AL CARRITO
+        SE ALMACENAN EN STORAGE PERO LA TABLA NO ME QUEDA GUARDADA, PROMETO CONCENTRAR EN ESO
+        POR LO PRONTO YA CUMPLO LOS REQUISITOS DE LA SEGUNDA PRE-ENTREGA :)*/
         let JSONcarrito = JSON.stringify(carrito)
 
         localStorage.setItem("InstrumentosSeleccionados", JSONcarrito)
-
 
 
 
@@ -114,38 +116,31 @@ const mostrarCompraG = () => {
 }
 
 
-//SEBA, ACA ABJO ES EXACTAMENTE LO MISMO CON PEQUEÑOS CAMBIOS DE RECONOCIMIENTO, TUVE QUE HACERLO DOS VECES
-//PORQUE ESTOY TRABAJANDO EN DOS ARRAYS DISTINTOS, TODO POR CUESTION DE ORDEN, 
+let tablaPersistente = localStorage.getItem("InstrumentosSeleccionados")
 
-function agregarAlCarritoB(bajoId) {
+let tablaParseada = JSON.parse(tablaPersistente)
 
-    let bajo = bajos.find((el) => el.id === bajoId)
-    carrito.push(bajo)
+let tablaCarrito = document.getElementById("tablaCarrito")
+
+for (instrumento of tablaParseada) {
+    tablaCarrito.innerHTML += `
+    <td>${instrumento.id}</td>
+    <td>${instrumento.tipo}</td>
+    <td>${instrumento.marca}</td>
+    <td>${instrumento.modelo}</td>
+    <td>${instrumento.precio}</td>
+    <td id="tablaConBoton"><button id="botonBorre-${instrumento.id}"><p>Eliminar Producto</p></button></td>
+    `
 
 
-    mostrarCompraB()
 }
 
-const mostrarCompraB = () => {
-    let tableBody = document.getElementById("tablaCarrito")
 
-    tableBody.innerHTML = ""
 
-    carrito.forEach((bajo) => {
-        const tr = document.createElement("tr")
-        tr.innerHTML = `
-        <td>${bajo.id}</td>
-        <td>${bajo.tipo}</td>
-        <td>${bajo.marca}</td>
-        <td>${bajo.modelo}</td>
-        <td>${bajo.precio}</td>
-        `
+let boton = document.getElementById("botonBorre-${instrumento.id}")
 
-        tableBody.appendChild(tr)
+boton.addEventListener("click", borrar)
 
-        let JSONcarrito = JSON.stringify(carrito)
-
-        localStorage.setItem("InstrumentosSeleccionados", JSONcarrito)
-    })
-
+function borrar() {
+    console.log("laconchademivieja")
 }
