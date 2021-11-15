@@ -11,8 +11,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+Antique:wght@300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <script defer src="../stock.js"></script>
     <script defer src="../main.js"></script>
+    <script defer src="../stock.js"></script>
+    <script defer src="../insumos.js"></script>
     <!-- A LOS SCRIPTS LES APLIQUÉ DEFER PARA QUE SE INICIALICEN UNA VEZ CARGADO EL HTML -->
     <title>Asincopados</title>
 </head>
@@ -36,26 +37,35 @@
         </ul>
     </header>
 
-    <main id="main-instrumentos">
-        <h2 class="animate__fadeIn">En AsicopadoS contamos con instrumentos de todo tipo, disfrutá de nuestro maravilloso Stock!</h2>
-        <img src="../media/fondoInstrumentos.jpg" alt="fondoInstrumentos">
+    <main id="main-insumos">
+        <h2 id="tituloInsumos">Puas? Cables? Correas? contamos con insumos de primera calidad para que tu experiencia musical sea única.</h2>
+        <div id="botones">
+            <button id="btnInsumos"><p id="textoBoton">Ir a productos</p></button>
+        </div>
+        <img src="../media/fondoInsumos.jpg" alt="fondoInsumos">
     </main>
 
     <section id="seccion-productos">
-        <span>GUITARRAS</span>
+        <span>Cables</span>
         <hr>
-        <ul id="lista-productos-guitarras">
+        <ul id="lista-productos-cables">
 
         </ul>
-        <span>BAJOS</span>
+        <span>Correas</span>
         <hr>
-        <ul id="lista-productos-bajos">
+        <ul id="lista-productos-correas">
+
+        </ul>
+        <span>Varios</span>
+        <hr>
+        <ul id="lista-productos-varios">
 
         </ul>
 
 
 
     </section>
+
 
     <table>
         <colgroup span="5" class="columns"></colgroup>
@@ -74,6 +84,7 @@
     <footer>
         <p>Todos los derechos reservados</p>
     </footer>
+
 
 </body>
 

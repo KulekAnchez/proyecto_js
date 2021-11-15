@@ -103,9 +103,6 @@ main img {
 
 /* PRODUCTOS CON SUS CARDS */
 
-
-/* Guitarras */
-
 #seccion-productos {
     display: flex;
     flex-direction: column;
@@ -116,7 +113,11 @@ main img {
     font-size: 1.7rem;
     font-weight: 700;
     text-align: center;
+    cursor: pointer;
 }
+
+
+/* Guitarras */
 
 #lista-productos-guitarras {
     display: flex;
@@ -207,6 +208,74 @@ button {
 hr {
     width: 100%;
     color: rgb(182, 60, 4);
+}
+
+
+/* SECCION INSUMOS */
+
+#main-insumos {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    box-shadow: none;
+    margin-top: 4rem;
+    margin-bottom: 5rem;
+}
+
+#main-insumos img {
+    width: 100%;
+    height: 75%;
+    box-shadow: 2px 6px 3px 3px rgba(0, 0, 0, 0.3);
+    margin-bottom: 2rem;
+}
+
+#main-insumos h2 {
+    margin-top: .3rem;
+    font-family: 'Zen Kaku Gothic Antique', sans-serif;
+    font-size: 2rem;
+    text-align: center;
+    position: relative;
+}
+
+#botones {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#btnInsumos {
+    margin-top: 2rem;
+    padding: .3rem;
+    background-color: rgb(223, 123, 77);
+}
+
+#textoBoton {
+    font-family: 'Zen Kaku Gothic Antique', sans-serif;
+    font-weight: 900;
+    font-size: 1.3rem;
+}
+
+#lista-productos-cables {
+    display: flex;
+    justify-content: space-around;
+    justify-items: center;
+    margin-bottom: 2rem;
+}
+
+#lista-productos-cables li {
+    list-style: none;
+    align-items: center;
+    margin-right: 2rem;
+    border: solid 1px black;
+    width: 18%;
+    background-color: rgb(223, 123, 77);
+    box-shadow: 2px 6px 3px 3px rgba(0, 0, 0, 0.3);
+    height: 33rem;
+}
+
+#lista-productos-cables li img {
+    width: 100%;
+    height: 60%;
 }
 
 
