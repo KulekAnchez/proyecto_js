@@ -230,7 +230,7 @@ hr {
 }
 
 #main-insumos h2 {
-    margin-top: .3rem;
+    margin-top: 1rem;
     font-family: 'Zen Kaku Gothic Antique', sans-serif;
     font-size: 2rem;
     text-align: center;
@@ -255,14 +255,18 @@ hr {
     font-size: 1.3rem;
 }
 
-#lista-productos-cables {
+#lista-productos-cables,
+#lista-productos-correas,
+#lista-productos-varios {
     display: flex;
     justify-content: space-around;
     justify-items: center;
     margin-bottom: 2rem;
 }
 
-#lista-productos-cables li {
+#lista-productos-cables li,
+#lista-productos-correas li,
+#lista-productos-varios li {
     list-style: none;
     align-items: center;
     margin-right: 2rem;
@@ -273,7 +277,9 @@ hr {
     height: 33rem;
 }
 
-#lista-productos-cables li img {
+#lista-productos-cables li img,
+#lista-productos-correas li img,
+#lista-productos-varios li img {
     width: 100%;
     height: 60%;
 }

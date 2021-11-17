@@ -15,35 +15,92 @@ $("#btnInsumos").click(() => {
 })
 
 
-//ESTE FOR EACH ES IDENTICO SOLO QUE APLIQUE SELECTOR DE JQUERY PARA CREAR LAS CARDDS
+//ESTE FOR EACH ES IDENTICO AL USADO EN INSTRUMENTOS SOLO QUE APLIQUE SELECTOR DE JQUERY PARA CREAR LAS CARDDS
+//ME SERVÍ DE UN STOCK CREADO EN JSON, DANDOLÉ CONDICIONALES SEGUN LOS ID PARA ORGANIZARLOS EN CADA UL SELECCIONADA
 
-insumos.forEach((insumo) => {
-    const li = document.createElement("li")
-    if (insumo.id > 9) {
-        li.innerHTML = `
-        <img src=${insumo.img} >
-        <h3 class="centrado">${insumo.tipo}</h3>
-        <h4 class="centrado">${insumo.marca} ${insumo.modelo}</h4>
-        <p class="centrado">Precio: $${insumo.precio}</p>
-        <button onclick="agregarAlCarrito(${insumo.id})">Añadir al carrito</button>
-    `
 
-        $("#lista-productos-cables").append(li)
-    }
+$.getJSON("/stock.json", (insumos) => {
+
+
+    insumos.forEach((insumo) => {
+
+        const insumosArr = [];
+        insumosArr.push(insumos)
+        console.log(insumosArr)
+
+        const li = document.createElement("li")
+        if ((insumo.id > 14) && (insumo.id < 18)) {
+            li.innerHTML = `
+            <img src=${insumo.img} >
+            <h3 class="centrado">${insumo.tipo}</h3>
+            <h4 class="centrado">${insumo.marca} ${insumo.modelo}</h4>
+            <p class="centrado">Precio: $${insumo.precio}</p>
+            <button id="btnAñadir(${insumo.id})">Añadir al carrito</button>
+        `
+
+            $("#lista-productos-cables").append(li)
+
+
+
+        } else if ((insumo.id > 19) && (insumo.id < 23)) {
+            li.innerHTML = `
+            <img src=${insumo.img} >
+            <h3 class="centrado">${insumo.tipo}</h3>
+            <h4 class="centrado">${insumo.marca} ${insumo.modelo}</h4>
+            <p class="centrado">Precio: $${insumo.precio}</p>
+            <button id="btnAñadir(${insumo.id})">Añadir al carrito</button>
+        `
+
+
+
+            $("#lista-productos-correas").append(li)
+
+
+        } else if (insumo.id > 24) {
+            li.innerHTML = `
+            <img src=${insumo.img} >
+            <h3 class="centrado">${insumo.tipo}</h3>
+            <h4 class="centrado">${insumo.marca} ${insumo.modelo}</h4>
+            <p class="centrado">Precio: $${insumo.precio}</p>
+            <button id="btnAnadir(${insumo.id})">Añadir al carrito</button>
+            `
+
+
+
+            $("#lista-productos-varios").append(li)
+
+
+
+        }
+
+    })
+
+
+    // EN LA HOJA DE ESTILOS LE DI UN POINTTER A LOS DE LAS UL SPAN Y HIDE A LOS LI,
+    //A LOS SPAN LES DI EVENTO CLICK Y QUE LES HAGA UN TOGGLE A LOS LI QUE CONTENGA, QUEDA RE BELLO
+
+    /* CABLES */
+    $("#lista-productos-cables li").hide()
+    $("#span-cables").click(() => {
+
+            $("#lista-productos-cables li").slideToggle(3500);
+
+        })
+        /* CORREAS */
+    $("#lista-productos-correas li").hide()
+    $("#span-correas").click(() => {
+
+            $("#lista-productos-correas li").slideToggle(3500);
+
+        })
+        /* VARIOS */
+    $("#lista-productos-varios li").hide()
+    $("#span-varios").click(() => {
+
+        $("#lista-productos-varios li").slideToggle(3500);
+
+    })
 })
-
-// EN LA HOJA DE ESTILOS LE DI UN POINTTER A LOS SPAN Y HIDE A LOS LI, POR LO PRONTO SOOLO HICE LOS CABLES,
-//A LOS SPAN LES DI EVENTO CLICK Y QUE LES HAGA UN TOGGLE A LOS LI QUE CONTENGA, QUEDA RE BELLO
-$("#lista-productos-cables li").hide()
-$("span").click(() => {
-
-    $("li").slideToggle(3500);
-
-})
-
-
-
-
 
 
 
