@@ -169,7 +169,7 @@ main img {
 }
 
 button {
-    margin-left: 3.8rem;
+    margin-left: 1.3rem;
     padding: .5rem;
     background-color: #00a0fda8;
     font-family: 'Zen Kaku Gothic Antique', sans-serif;
@@ -282,6 +282,12 @@ hr {
 #lista-productos-varios li img {
     width: 100%;
     height: 60%;
+}
+
+#cantidad {
+    position: absolute;
+    margin-left: .5rem;
+    margin-top: .5rem;
 }
 
 

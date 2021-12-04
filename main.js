@@ -10,7 +10,8 @@ $.getJSON("/stock.json", (instrumentos) => {
 
     instrumentos.forEach((instrumento) => {
         const li = document.createElement("li")
-        if ((instrumento.id < 9) && (instrumento.id > 0)) {
+        if ((instrumento.tipo == "Guitarra")) {
+
             li.innerHTML = `
         <img src=${instrumento.img} >
         <h3 class="centrado">${instrumento.tipo}</h3>
@@ -20,7 +21,8 @@ $.getJSON("/stock.json", (instrumentos) => {
         `
             listaGuitarras.append(li)
 
-        } else if ((instrumento.id < 14) && (instrumento.id > 9)) {
+        } else if ((instrumento.tipo == "Bajo")) {
+
 
 
             li.innerHTML = `
@@ -40,29 +42,34 @@ $.getJSON("/stock.json", (instrumentos) => {
     })
 })
 
+
+
+
 //CREO MI ARRAY CARRITO DONDE PUSHEAR LOS OBJETOS QUE CREE Y VOY A RECUPERAR A CONTINUACION
 
 const instrumentosArr = [];
 const carrito = [];
 
 
-
 //A ESTA FUNCION CON PARAMETRO LE PIDO QUE ME DEVUELVA UN INSTRUMENTO SEGUN EL ID DE CADA BOTON INDEPENDIENTE QUE SE GENERÓ
+function actualizarLS() {
+    localStorage.setItem('InstrumentosSeleccionados', JSON.stringify(carrito));
+}
+// viene del botón onClick, se recibe como parametro id desde la card.
 function agregarAlCarrito(instId) {
 
     let instrumentoAgregado = instrumentosArr.find((el) => el.id === instId)
     carrito.push(instrumentoAgregado)
-
-
+    actualizarLS();
     mostrarCompra()
 }
-//Y A ESTA ARROW FUNCTION LE DIGO QUE TOME UNA TABLA QUE CREE EN HTML 
+//Y A ESTA ARROW FUNCTION LE DIGO QUE TOME UNA TABLA QUE CREE EN HTML
+
+
 const mostrarCompra = () => {
     let tableBody = document.getElementById("tablaCarrito")
 
-    tableBody.innerHTML = ""
-        //ASIGNO LA VARIABLE Y DOY UN CUERPO DE TABLA VACIO PARA LUEGO LLENARLO ABAJO CON UN TR 
-        //HACIENDO OTRO FOR EACH EL CUAL ME DEVUELVE TD´S ADENTRO CON LOS VALORES DE CADA INSTRUMENTO
+
     carrito.forEach((instrumento) => {
         const tr = document.createElement("tr")
         tr.innerHTML = `
@@ -78,26 +85,16 @@ const mostrarCompra = () => {
 
 
 
-
-
-        /*Y ACA ABAJO, CON MI ULTIMA NEURONA SANA GENERO UN LOCAL STORAGE DESDE EL CARRITO PASADO POR JSON
-        EL CUAL ME ACUMULA EN UN ARRAY TODOS LOS OBJETOS QUE YO HAYA DECIDIDO AGREGAR AL CARRITO
-        SE ALMACENAN EN STORAGE PERO LA TABLA NO ME QUEDA GUARDADA, PROMETO CONCENTRAR EN ESO
-        POR LO PRONTO YA CUMPLO LOS REQUISITOS DE LA SEGUNDA PRE-ENTREGA :)*/
-        let JSONcarrito = JSON.stringify(carrito)
-
-        localStorage.setItem("InstrumentosSeleccionados", JSONcarrito)
-
-
-
-
     })
 
-    // const trTotal = document.createElement("tr")
-    // trTotal.innerHTML = `
-    //     <td><p>Precio Total: ${instrumento.precio}</p></td>
-    //     `
-    // tableBody.appendChild(trTotal)
+
+
+    let JSONcarrito = JSON.stringify(carrito)
+
+    localStorage.setItem("InstrumentosSeleccionados", JSONcarrito)
+
+
+
 
 }
 
@@ -108,6 +105,7 @@ let tablaParseada = JSON.parse(tablaPersistente)
 
 let tablaCarrito = document.getElementById("tablaCarrito")
 
+
 for (instrumento of tablaParseada) {
     tablaCarrito.innerHTML += `
     <td>${instrumento.id}</td>
@@ -115,33 +113,21 @@ for (instrumento of tablaParseada) {
     <td>${instrumento.marca}</td>
     <td>${instrumento.modelo}</td>
     <td>${instrumento.precio}</td>
-    <td id="tablaConBoton"><button id="botonBorre-${instrumento.id}" onclick=borrarInstru()><p>Eliminar Producto</p></button></td>
+    <td id="tablaConBoton">
+        <button class="btnDelete" id="botonBorre-${instrumento.id}"> Eliminar Producto </button>
+    </td>
     `
-    borrarInstru()
+}
 
+const allBtnDelete = document.querySelectorAll('.btnDelete');
+
+
+function borrar() {
+
+    e.target.parentElement.parentElement.parentElement.remove()
 
 
 }
 
-
-
-
-function borrarInstru() {
-    let buton = document.getElementById(`botonBorre-${instrumento.id}`)
-
-    buton.addEventListener("click", borrar)
-
-    function borrar(index) {
-        let instrumento = instrumento.find((el) => el.id === index)
-        tablaParseada.splice(instrumento, 1)
-    }
-
-    // function borrar(e) {
-
-    //     e.target.parentElement.parentElement.parentElement.remove()
-
-
-    // }
-}
 
 //SEBA, ACA POR ALGUNA RAZÓN NO ME DEJA APLICAR EVENTO, ME TIRA QUE EL ADDEVENTLISTENER ES NULL.. HICE LO QUE PUDE (?)

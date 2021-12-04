@@ -1,5 +1,6 @@
 //ACA CREO UN BOTON CON FUNCION DE SCROLL A LA SECCION DE PRODUCTOS, LO APLIQUÉ ACA Y NO EN INSTRUMENTOS
 //YA QUE POR ALGUNA RAZON CUALQUIER COSA DE JQUERY INTERNA QUE APLIQUE ME ROMPE LAS CARDS, TENDRIA QUE RE-ESTRUCTURAR TODO
+// usas todo estructurado, muy pocas llamadas a funciones
 
 //APARECE EN HIDE Y VA APARECIENDO EN UNA SUSECION DE 2 SEGUNDOS Y MEDIO
 $("#btnInsumos").hide()
@@ -24,32 +25,35 @@ $.getJSON("/stock.json", (insumos) => {
 
     insumos.forEach((insumo) => {
 
-        const insumosArr = [];
-        insumosArr.push(insumos)
-        console.log(insumosArr)
+
 
         const li = document.createElement("li")
-        if ((insumo.id > 14) && (insumo.id < 18)) {
+        if ((insumo.tipo == "Cable")) {
             li.innerHTML = `
             <img src=${insumo.img} >
             <h3 class="centrado">${insumo.tipo}</h3>
             <h4 class="centrado">${insumo.marca} ${insumo.modelo}</h4>
             <p class="centrado">Precio: $${insumo.precio}</p>
-            <button id="btnAñadir(${insumo.id})">Añadir al carrito</button>
+            <button class="botonazo" id="btnAñadir(${insumo.id})">Añadir al carrito</button>
+            <input type="number" id="cantidad" min="0" max="10">
+
         `
 
             $("#lista-productos-cables").append(li)
 
 
 
-        } else if ((insumo.id > 19) && (insumo.id < 23)) {
+        } else if ((insumo.tipo == "Correa")) {
+
             li.innerHTML = `
             <img src=${insumo.img} >
             <h3 class="centrado">${insumo.tipo}</h3>
             <h4 class="centrado">${insumo.marca} ${insumo.modelo}</h4>
             <p class="centrado">Precio: $${insumo.precio}</p>
-            <button id="btnAñadir(${insumo.id})">Añadir al carrito</button>
-        `
+            <button class="botonazo" id="btnAñadir${insumo.id}">Añadir al carrito</button>
+            <input type="number" id="cantidad" min="0" max="10">
+            
+            `
 
 
 
@@ -62,7 +66,8 @@ $.getJSON("/stock.json", (insumos) => {
             <h3 class="centrado">${insumo.tipo}</h3>
             <h4 class="centrado">${insumo.marca} ${insumo.modelo}</h4>
             <p class="centrado">Precio: $${insumo.precio}</p>
-            <button id="btnAnadir(${insumo.id})">Añadir al carrito</button>
+            <button class="botonazo" id="btnAnadir${insumo.id}">Añadir al carrito</button> 
+            <input type="number" id="cantidad" min="0" max="10">
             `
 
 
@@ -72,8 +77,10 @@ $.getJSON("/stock.json", (insumos) => {
 
 
         }
-
+        insumosArr.push(insumo)
     })
+
+
 
 
     // EN LA HOJA DE ESTILOS LE DI UN POINTTER A LOS DE LAS UL SPAN Y HIDE A LOS LI,
@@ -103,5 +110,49 @@ $.getJSON("/stock.json", (insumos) => {
 })
 
 
+insumosArr = [];
+carrito = [];
 
 // =====================================
+document.onreadystatechange = () => {
+    let botonesAnadir = document.querySelectorAll(".botonazo")
+
+    botonesAnadir.forEach((anadir) => {
+
+            anadir.addEventListener("click", agregarItem);
+
+            function agregarItem() {
+                let insumoAgregado = insumosArr.find((el) => el.id === insuId)
+                carrito.push(insumoAgregado)
+                mostrarCompra()
+            }
+        }
+
+    );
+}
+
+const mostrarCompra = () => {
+    let tableBody = document.getElementById("tablaCarrito")
+
+
+    carrito.forEach((insumo) => {
+        const trInsu = document.createElement("tr")
+        tr.innerHTML = `
+        <td>${insumo.id}</td>
+        <td>${insumo.tipo}</td>
+        <td>${insumo.marca}</td>
+        <td>${insumo.modelo}</td>
+        <td>${insumo.precio}</td>
+        <td id="tablaConBoton"><button id="botonBorre-${insumo.id}"><p>Eliminar Producto</p></button></td>
+        `
+
+        tableBody.appendChild(trInsu)
+
+
+
+    })
+
+    let JSONcarrito = JSON.stringify(carrito)
+
+    localStorage.setItem("InsumosSeleccionados", JSONcarrito)
+}
